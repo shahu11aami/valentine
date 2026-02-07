@@ -3,102 +3,127 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>For You ❤️</title>
+<title>For Rafee ❤️</title>
 <style>
-body {
-  background: #0f0f14;
-  color: #fff;
-  font-family: Arial;
-  text-align: center;
-  padding: 20px;
+body{
+  background:#0f0f14;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+  padding:20px;
 }
-.card {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  border-radius: 20px;
-  background: #181820;
-  box-shadow: 0 0 20px #ff0055;
+.card{
+  max-width:600px;
+  margin:auto;
+  padding:20px;
+  border-radius:20px;
+  background:#181820;
+  box-shadow:0 0 20px #ff0055;
 }
-button {
-  margin: 10px;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 10px;
-  background: #ff0055;
-  color: white;
-  cursor: pointer;
+button{
+  margin:10px;
+  padding:10px 16px;
+  border:none;
+  border-radius:10px;
+  background:#ff0055;
+  color:white;
+  cursor:pointer;
 }
-.hidden { display: none; }
+.hidden{display:none;}
+img{max-width:250px;border-radius:15px;margin:10px;}
 </style>
 </head>
 <body>
 <div class="card">
-  <h2 id="title">Hey You…</h2>
-  <p id="text">I built something just for you. Ready?</p>
-  <button onclick="next()" id="btn">Start</button>
+  <h2 id="title">Rafee…</h2>
+  <p id="text">Will you be my Valentine? 💖</p>
 
-  <div id="task" class="hidden">
-    <p id="taskText"></p>
-    <input id="answer" placeholder="type here" />
-    <button onclick="check()">Submit</button>
+  <div id="buttons">
+    <button onclick="valentineYes()">Yes</button>
+    <button onclick="valentineMaybe()">Maybe</button>
   </div>
+
+  <div id="content" class="hidden"></div>
 </div>
 
 <script>
-let step = 0;
+function set(html){ document.getElementById('content').innerHTML = html; }
+function show(){ document.getElementById('content').classList.remove('hidden'); }
+function hideBtns(){ document.getElementById('buttons').classList.add('hidden'); }
 
-const tasks = [
-  { q: "Where did we first meet?", a: "" },
-  { q: "One thing you love about me?", a: "" },
-  { q: "Your favorite nickname for me?", a: "" }
-];
-
-function next() {
-  step++;
-
-  if (step === 1) {
-    text.innerText = "I’ve been wanting to ask you something for a long time…";
-  }
-
-  if (step === 2) {
-    text.innerText = "But first, a little game 😌";
-    btn.innerText = "Play";
-  }
-
-  if (step === 3) {
-    btn.classList.add("hidden");
-    task.classList.remove("hidden");
-    loadTask(0);
-  }
+function valentineMaybe(){
+  hideBtns(); show();
+  set(`
+    <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif"/>
+    <p>You have no choice 😌</p>
+    <button onclick="valentineYes()">Okay Yes</button>
+  `);
 }
 
-let current = 0;
-
-function loadTask(i) {
-  taskText.innerText = tasks[i].q;
-  answer.value = "";
+function valentineYes(){
+  hideBtns(); show();
+  set(`
+    <img src="https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif"/>
+    <p>Happy hug loading… 🤗</p>
+    <button onclick="loveQ()">Next</button>
+  `);
 }
 
-function check() {
-  current++;
-  if (current < tasks.length) {
-    loadTask(current);
-  } else {
-    finish();
-  }
+function loveQ(){
+  set(`
+    <img src="https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif"/>
+    <p>Do you love me?</p>
+    <button onclick="loveYes()">Yes</button>
+    <button onclick="loveNo()">No</button>
+  `);
 }
 
-function finish() {
-  task.classList.add("hidden");
-  title.innerText = "So here it is…";
-  text.innerHTML = "Will you be my Valentine? 💖";
-  btn.classList.remove("hidden");
-  btn.innerText = "YES";
-  btn.onclick = () => {
-    text.innerHTML = "Best decision of your life 😌<br/>More surprises coming soon…";
-    btn.classList.add("hidden");
-  };
+function loveNo(){
+  set(`
+    <img src="https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif"/>
+    <p>You have no going back from me 😤❤️</p>
+    <button onclick="loveYes()">Okay Okay</button>
+  `);
+}
+
+function loveYes(){
+  set(`
+    <p>Our last meet was December 09…</p>
+    <button onclick="count()">Go</button>
+  `);
+}
+
+function count(){
+  set(`
+    <img src="https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif"/>
+    <p>It’s been 2 months (66 days) 😔</p>
+    <button onclick="miss()">Next</button>
+  `);
+}
+
+function miss(){
+  set(`
+    <img src="https://media.giphy.com/media/7SF5scGB2AFrgsXP63/giphy.gif"/>
+    <h3>I miss youuuu</h3>
+    <button onclick="end()">Next</button>
+  `);
+}
+
+function end(){
+  set(`
+    <h3>Waiting for you my love</h3>
+    <p>I will always choose you..</p>
+
+    <h4>Send me Valentine Gift 😌</h4>
+
+    <p>Send me money directly 😌💸</p>
+    <p>UPI / GPay / Bank – you already know where to send</p>
+
+    <p>Or send me  food to:</p>
+    <p>you already know where to send</p>
+
+    <button onclick=\"alert('Best boyfriend mode activated')\">you are the best</button>
+  `);
 }
 </script>
 </body>
