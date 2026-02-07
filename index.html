@@ -5,126 +5,78 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>For Rafee ❤️</title>
 <style>
+:root{
+  --pink:#ff4b8a;
+  --red:#ff1e56;
+  --white:#fff;
+}
+*{box-sizing:border-box;}
 body{
-  background:#0f0f14;
-  color:white;
-  font-family:Arial;
-  text-align:center;
-  padding:20px;
+  margin:0;
+  background:linear-gradient(160deg,#fff5f8,#ffe3ec);
+  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
 }
 .card{
-  max-width:600px;
-  margin:auto;
-  padding:20px;
-  border-radius:20px;
-  background:#181820;
-  box-shadow:0 0 20px #ff0055;
+  width:92%;
+  max-width:420px;
+  margin:20px auto;
+  padding:18px;
+  border-radius:22px;
+  background:white;
+  box-shadow:0 10px 30px rgba(255,30,86,.18);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
 }
 button{
-  margin:10px;
-  padding:10px 16px;
+  width:100%;
+  margin:8px 0;
+  padding:12px;
   border:none;
-  border-radius:10px;
-  background:#ff0055;
+  border-radius:14px;
+  font-size:16px;
+  background:var(--pink);
   color:white;
-  cursor:pointer;
 }
-.hidden{display:none;}
-img{max-width:250px;border-radius:15px;margin:10px;}
+.sec{animation:fade .4s ease;}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.hearts span{
+  position:absolute;
+  animation:fly 6s linear infinite;
+  color:#ff6b9c;
+}
+@keyframes fly{
+  from{transform:translateY(120vh) scale(.6);}
+  to{transform:translateY(-10vh) scale(1.1);}
+}
+.highlight{
+  color:var(--red);
+  font-weight:700;
+  font-size:18px;
+}
+img{max-width:220px;border-radius:16px;margin:8px 0;}
 </style>
 </head>
 <body>
-<div class="card">
-  <h2 id="title">Rafee…</h2>
-  <p id="text">Will you be my Valentine? 💖</p>
-
-  <div id="buttons">
-    <button onclick="valentineYes()">Yes</button>
-    <button onclick="valentineMaybe()">Maybe</button>
-  </div>
-
-  <div id="content" class="hidden"></div>
-</div>
+<div class="hearts" id="h"></div>
+<div class="card" id="app"></div>
 
 <script>
-function set(html){ document.getElementById('content').innerHTML = html; }
-function show(){ document.getElementById('content').classList.remove('hidden'); }
-function hideBtns(){ document.getElementById('buttons').classList.add('hidden'); }
-
-function valentineMaybe(){
-  hideBtns(); show();
-  set(`
-    <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif"/>
-    <p>You have no choice 😌</p>
-    <button onclick="valentineYes()">Okay Yes</button>
-  `);
+// floating hearts
+for(let i=0;i<18;i++){
+  let s=document.createElement('span');
+  s.innerHTML='❤';
+  s.style.left=Math.random()*100+'%';
+  s.style.animationDelay=Math.random()*5+'s';
+  document.getElementById('h').appendChild(s);
 }
 
-function valentineYes(){
-  hideBtns(); show();
-  set(`
-    <img src="https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif"/>
-    <p>Happy hug loading… 🤗</p>
-    <button onclick="loveQ()">Next</button>
-  `);
-}
+const app=id=>document.getElementById('app');
+const set=h=>app().innerHTML='<div class="sec">'+h+'</div>';
 
-function loveQ(){
-  set(`
-    <img src="https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif"/>
-    <p>Do you love me?</p>
-    <button onclick="loveYes()">Yes</button>
-    <button onclick="loveNo()">No</button>
-  `);
-}
+start();
 
-function loveNo(){
-  set(`
-    <img src="https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif"/>
-    <p>You have no going back from me 😤❤️</p>
-    <button onclick="loveYes()">Okay Okay</button>
-  `);
-}
-
-function loveYes(){
-  set(`
-    <p>Our last meet was December 09…</p>
-    <button onclick="count()">Go</button>
-  `);
-}
-
-function count(){
-  set(`
-    <img src="https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif"/>
-    <p>It’s been 2 months (66 days) 😔</p>
-    <button onclick="miss()">Next</button>
-  `);
-}
-
-function miss(){
-  set(`
-    <img src="https://media.giphy.com/media/7SF5scGB2AFrgsXP63/giphy.gif"/>
-    <h3>I miss youuuu</h3>
-    <button onclick="end()">Next</button>
-  `);
-}
-
-function end(){
-  set(`
-    <h3>Waiting for you my love</h3>
-    <p>I will always choose you..</p>
-
-    <h4>Send me Valentine Gift 😌</h4>
-
-    <p>Send me money directly 😌💸</p>
-    <p>UPI / GPay / Bank – you already know where to send</p>
-
-    <p>Or send me  food to:</p>
-    <p>you already know where to send</p>
-
-    <button onclick=\"alert('Best boyfriend mode activated')\">you are the best</button>
-  `);
-}
-</script>
-</body>
-</html>
+function start(){
+ set(`
+  <h2>Will you be my Valentine, Rafee?</h2>
+  <img src
