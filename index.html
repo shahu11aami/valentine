@@ -74,7 +74,9 @@ for(let i=0;i<18;i++){
 const app=id=>document.getElementById('app');
 const set=h=>app().innerHTML='<div class="sec">'+h+'</div>';
 
-start();
+// start after DOM ready
+if(document.readyState!=='loading') start();
+else document.addEventListener('DOMContentLoaded',start);
 
 function start(){
  set(`
