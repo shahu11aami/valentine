@@ -79,4 +79,100 @@ start();
 function start(){
  set(`
   <h2>Will you be my Valentine, Rafee?</h2>
-  <img src
+  <img src="https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif"/>
+  <button onclick="maybe()">Yes obviously</button>
+  <button onclick="maybe()">Maybe (danger button)</button>
+ `);
+}
+
+function maybe(){
+ set(`
+  <p>You really thought you had options? 😌</p>
+  <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif"/>
+  <button onclick="hug()">Fine fine, YES boss</button>
+ `);
+}
+
+function hug(){
+ set(`
+  <p>Come here, virtual hug first 🤗</p>
+  <img src="https://media.giphy.com/media/5eyhBKLvYhafu/giphy.gif"/>
+  <button onclick="love()">Your turn Mr. Handsome</button>
+ `);
+}
+
+function love(){
+ set(`
+  <p>Do you love me?</p>
+  <img src="https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif"/>
+  <button onclick="loveYes()">Of course I do</button>
+  <button onclick="loveYes()">No (liar mode)</button>
+ `);
+}
+
+function loveYes(){
+ set(`
+  <p>Our last meet was <span class="highlight">December 09</span></p>
+  <button onclick="days()">Count the pain</button>
+ `);
+}
+
+function days(){
+ set(`
+  <p>It’s been <span class="highlight">2 months – 66 days</span></p>
+  <img src="https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif"/>
+  <button onclick="miss()">Tell the truth</button>
+ `);
+}
+
+function miss(){
+ set(`
+  <h3>I miss youuuu</h3>
+  <img src="https://media.giphy.com/media/7SF5scGB2AFrgsXP63/giphy.gif"/>
+  <button onclick="wait()">Say it back</button>
+ `);
+}
+
+function wait(){
+ set(`
+  <h3>Waiting for you my love</h3>
+  <button onclick="withLove()">Send some love</button>
+ `);
+}
+
+function withLove(){
+ set(`
+  <h3>With love ❤️</h3>
+  <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"/>
+  <button onclick="choose()">Go my hero</button>
+ `);
+}
+
+function choose(){
+ set(`
+  <h3>I will always choose you</h3>
+  <button onclick="gift()">Now your duty sir</button>
+ `);
+}
+
+function gift(){
+ set(`
+  <h3>Send me Valentine Gift</h3>
+  <button onclick="done('gift')">Send me gift</button>
+  <button onclick="done('flower')">Send me flower</button>
+  <button onclick="done('food')">Send me food</button>
+  <button onclick="done('money')">Send me money</button>
+ `);
+}
+
+function done(t){
+ set(`
+  <h3>You are the best 😭❤️</h3>
+  <p>Love party activated!</p>
+  <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif"/>
+  <p>I knew you would choose: <b>${t}</b></p>
+ `);
+}
+</script>
+</body>
+</html>
