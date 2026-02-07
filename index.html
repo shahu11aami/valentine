@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For You ❤️</title>
+<style>
+body {
+  background: #0f0f14;
+  color: #fff;
+  font-family: Arial;
+  text-align: center;
+  padding: 20px;
+}
+.card {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 20px;
+  background: #181820;
+  box-shadow: 0 0 20px #ff0055;
+}
+button {
+  margin: 10px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  background: #ff0055;
+  color: white;
+  cursor: pointer;
+}
+.hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h2 id="title">Hey You…</h2>
+  <p id="text">I built something just for you. Ready?</p>
+  <button onclick="next()" id="btn">Start</button>
+
+  <div id="task" class="hidden">
+    <p id="taskText"></p>
+    <input id="answer" placeholder="type here" />
+    <button onclick="check()">Submit</button>
+  </div>
+</div>
+
+<script>
+let step = 0;
+
+const tasks = [
+  { q: "Where did we first meet?", a: "" },
+  { q: "One thing you love about me?", a: "" },
+  { q: "Your favorite nickname for me?", a: "" }
+];
+
+function next() {
+  step++;
+
+  if (step === 1) {
+    text.innerText = "I’ve been wanting to ask you something for a long time…";
+  }
+
+  if (step === 2) {
+    text.innerText = "But first, a little game 😌";
+    btn.innerText = "Play";
+  }
+
+  if (step === 3) {
+    btn.classList.add("hidden");
+    task.classList.remove("hidden");
+    loadTask(0);
+  }
+}
+
+let current = 0;
+
+function loadTask(i) {
+  taskText.innerText = tasks[i].q;
+  answer.value = "";
+}
+
+function check() {
+  current++;
+  if (current < tasks.length) {
+    loadTask(current);
+  } else {
+    finish();
+  }
+}
+
+function finish() {
+  task.classList.add("hidden");
+  title.innerText = "So here it is…";
+  text.innerHTML = "Will you be my Valentine? 💖";
+  btn.classList.remove("hidden");
+  btn.innerText = "YES";
+  btn.onclick = () => {
+    text.innerHTML = "Best decision of your life 😌<br/>More surprises coming soon…";
+    btn.classList.add("hidden");
+  };
+}
+</script>
+</body>
+</html>
